@@ -1,0 +1,105 @@
+﻿RESEARCH PROPOSAL FORM 
+ 
+SUBMITTED IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR THE DEGREE OF MASTER OF SCIENCE IN SOFTWARE ENGINEERING (MSE) 
+
+
+Paper Title (if known): 
+  
+
+Paper proposal (Answer as many of the numbered questions below as you can. Follow-on questions are provided for guidance; they do not need to be individually answered. Your proposal is not a commitment; you could change some of the items later but thinking through them now will help you formulate a realistic scope. In responding, avoid using cryptic jargon. If you must introduce an acronym or special concept, please define it in glossary section. Similarly, if you need to list any references, please do so in the homonymous section.) 
+1. What are you trying to do? 
+2. How is it done today?  
+− What are the limits of current practice/knowledge? 
+− Why are improvements needed? 
+− What are the consequences of doing nothing? 
+3. What is new in your approach? 
+4. What new knowledge will the project generate? 
+− As embodied in the artifact or its behavior 
+− About the design process, a design theory 
+5. Why do you think your approach will be successful?
+− Have you done any preliminary work?  
+− Have you tested your assumptions on a small scale? 
+6. Who cares? 
+− Who are the stakeholders? 
+− Who will benefit from it? 
+7. If you are successful, how do you envision your work will be used? 
+8. Are there any special items, knowledge, or authorization that you must obtain to complete the work? 
+9. How could you validate/justify the new knowledge? 
+− Analysis 
+− Experimentation 
+− Surveys 
+− Simulation 
+− Abductive method 
+− Case study 
+− Literature reviews or mappings 
+− Other? 
+10. Are you aware of any S3D / MSE Faculty how might act as technical advisor on the project? This person would act as a subject matter expert and help provide specific technical guidance on your research. 
+________________
+
+
+Proposal (Max 2 pages) 
+
+
+Research Question: 
+How do different combinations of geometric and visual features affect the accuracy and computational cost of reference-free jigsaw puzzle piece matching under different puzzle conditions?
+
+
+Question 1: 
+This paper will investigate how different combinations of geometric and visual features affect the accuracy and computational cost of matching jigsaw puzzle pieces when the completed puzzle image is unavailable. I will compare approaches using information such as piece boundary shape, color, and image texture. Rather than developing a complete puzzle reconstruction system, the project will focus on pairwise piece matching: determining whether two pieces are likely to be adjacent. The completed puzzle will be retained only as ground truth for evaluation and will not be provided to the algorithms.
+
+
+Question 2: 
+Reference-free jigsaw puzzle reconstruction is an established computer vision problem. Existing approaches use information such as piece geometry, visual similarity, and probabilistic or graph-based methods to determine relationships between pieces. However, different approaches rely on different types of information, and there is a tradeoff between matching accuracy and computational cost. More complex feature representations may improve accuracy while requiring more processing. These tradeoffs may also change depending on puzzle size and visual complexity. Understanding these tradeoffs could help researchers and developers select appropriate techniques for future puzzle reconstruction or computer-assisted puzzle applications.
+
+
+Question 3: 
+Rather than proposing another complete puzzle-solving algorithm, this project will systematically compare different feature combinations under controlled conditions. For example, I will compare:
+* Geometry only
+* Visual information only
+* Geometry + color
+* Geometry + texture
+* Geometry + color + texture
+I will evaluate these approaches across different puzzle sizes and image characteristics to determine when each approach is most effective.
+
+
+Question 4: 
+The project will generate empirical knowledge about the relationship between feature selection, matching accuracy, and computational cost. In particular, it will investigate:
+* Which features provide the most useful information for identifying neighboring pieces.
+* Whether combining geometric and visual features significantly improves accuracy.
+* Whether additional features provide enough accuracy improvement to justify their computational cost.
+* How these tradeoffs change as puzzle size and visual complexity increase.
+The resulting artifact will be an experimental framework that implements the different approaches and measures their performance.
+
+
+Question 5: 
+The project can use existing puzzle-generation tools rather than requiring a custom puzzle generator. Tools such as piecemaker can generate jigsaw pieces while retaining information about their original positions and neighboring relationships, providing reliable ground truth for experiments. As preliminary work, I will generate a small set of puzzles and implement a simple geometric matching baseline. I will then test whether the correct neighboring pieces receive higher compatibility scores than unrelated pieces. This will establish whether the proposed experimental methodology is feasible before expanding to additional features and larger datasets.
+
+
+Question 6: 
+The primary stakeholders are computer vision researchers and software developers interested in image reconstruction and matching problems. The findings may also benefit developers of puzzle-solving or computer-assisted puzzle applications and, potentially, puzzle enthusiasts and accessibility-focused applications. The primary value of the project is the experimental knowledge about the effectiveness and computational tradeoffs of different matching strategies.
+
+
+Question 7: 
+The resulting framework could be used to evaluate or select matching strategies for future reference-free puzzle reconstruction systems. For example, the results could show that geometric matching provides sufficient accuracy for large puzzles while a hybrid approach is more effective for puzzles containing visually repetitive regions. Future systems could then select an approach based on the characteristics of the puzzle and the desired balance between accuracy and performance.
+
+
+Question 8: 
+The project will require knowledge of image processing, computer vision, feature extraction, and algorithm analysis. I plan to use Python and existing image-processing libraries. I do not anticipate requiring human subjects, surveys, or participant recruitment because the experiments can be evaluated against automatically generated ground truth. Existing puzzle-generation tools and publicly available images can provide the necessary datasets.
+
+
+Question 9:
+The primary validation methods will be experimentation and quantitative analysis. For each puzzle, the known original arrangement will provide ground truth. The algorithms will be evaluated using:
+* Pairwise matching accuracy
+* Precision, recall, and F1 score
+* Top-k matching accuracy
+* Runtime and memory usage
+* Scalability as puzzle size increases
+The central hypothesis is: combining geometric and visual features will improve matching accuracy compared with using either feature type alone, but the improvement will come at an increased computational cost. The size of this tradeoff will depend on puzzle characteristics.
+
+
+Question 10: 
+I am not yet committed to a technical advisor. I would seek an S3D/MSE faculty member with expertise in software engineering, algorithms, computer vision, or empirical evaluation.
+	________________
+
+
+Glossary
