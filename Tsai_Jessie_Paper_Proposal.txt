@@ -41,46 +41,47 @@ Proposal (Max 2 pages)
 
 
 Research Question: 
-How do different combinations of geometric and visual features affect the accuracy and computational cost of reference-free jigsaw puzzle piece matching under different puzzle conditions?
+How can software engineers choose between geometric and visual jigsaw puzzle matching strategies based on puzzle characteristics and quality requirements such accuracy, runtime, and memory consumption?
 
 
 Question 1: 
-This paper will investigate how different combinations of geometric and visual features affect the accuracy and computational cost of matching jigsaw puzzle pieces when the completed puzzle image is unavailable. I will compare approaches using information such as piece boundary shape, color, and image texture. Rather than developing a complete puzzle reconstruction system, the project will focus on pairwise piece matching: determining whether two pieces are likely to be adjacent. The completed puzzle will be retained only as ground truth for evaluation and will not be provided to the algorithms.
+This paper will investigate how different jigsaw puzzle matching strategies perform under different puzzle characteristics and quality requirements. I will compare approaches using information such as piece boundary shape, color, and image texture. Rather than developing a complete puzzle reconstruction system, the project will focus on pairwise piece matching: determining whether two pieces are likely to be adjacent. The completed puzzle image will be retained only as ground truth for evaluation and will not be provided to the algorithms. The goal is to use the experimental results to develop practical guidance for software engineers when selecting a matching strategy for a particular application.
 
 
 Question 2: 
-Reference-free jigsaw puzzle reconstruction is an established computer vision problem. Existing approaches use information such as piece geometry, visual similarity, and probabilistic or graph-based methods to determine relationships between pieces. However, different approaches rely on different types of information, and there is a tradeoff between matching accuracy and computational cost. More complex feature representations may improve accuracy while requiring more processing. These tradeoffs may also change depending on puzzle size and visual complexity. Understanding these tradeoffs could help researchers and developers select appropriate techniques for future puzzle reconstruction or computer-assisted puzzle applications.
+Reference-free jigsaw puzzle reconstruction is an established computer vision problem. Existing approaches use information such as piece geometry, visual similarity, and probabilistic or graph-based methods to determine relationships between pieces. However, different approaches rely on different types of information, and engineers must consider multiple quality requirements, including runtime, memory consumption, and scalability. More complex feature representations may improve accuracy while increasing computational cost, and the best choice depends on the characteristics of the puzzle and the requirements of the application. Without empirical guidance about these tradeoffs, engineers may choose approaches based primarily on intuition or optimize for accuracy without considering their computational cost. This can result in unnecessarily expensive systems or systems that do not meet their required accuracy.
 
 
 Question 3: 
-Rather than proposing another complete puzzle-solving algorithm, this project will systematically compare different feature combinations under controlled conditions. For example, I will compare:
+Rather than proposing another complete puzzle-solving algorithm, this project will systematically compare different feature combinations under controlled conditions and translate the results into software engineering guidance for making design decisions. For example, I will compare:
 * Geometry only
 * Visual information only
 * Geometry + color
 * Geometry + texture
 * Geometry + color + texture
-I will evaluate these approaches across different puzzle sizes and image characteristics to determine when each approach is most effective.
+I will evaluate these approaches across different puzzle sizes and image characteristics. The goal is not simply to identify the highest-performing approach, but to determine when each approach provides an appropriate tradeoff between accuracy and resource consumption.
 
 
 Question 4: 
-The project will generate empirical knowledge about the relationship between feature selection, matching accuracy, and computational cost. In particular, it will investigate:
+The project will generate empirical guidance for selecting a jigsaw puzzle matching strategy based on system requirements and puzzle characteristics. In particular, it will investigate:
 * Which features provide the most useful information for identifying neighboring pieces.
-* Whether combining geometric and visual features significantly improves accuracy.
-* Whether additional features provide enough accuracy improvement to justify their computational cost.
-* How these tradeoffs change as puzzle size and visual complexity increase.
-The resulting artifact will be an experimental framework that implements the different approaches and measures their performance.
+* How much accuracy improves when additional features are introduced.
+* Whether accuracy improvements justify the additional runtime and memory consumption.
+* How the tradeoffs change as puzzle size and visual complexity increase.
+* Which strategy is most appropriate under different combinations of accuracy and performance requirements. 
+The resulting artifact will be an experimental framework for implementing and evaluating the different approaches. The primary research contribution will be the decision guidance derived from the experimental results, rather than the framework itself.
 
 
 Question 5: 
-The project can use existing puzzle-generation tools rather than requiring a custom puzzle generator. Tools such as piecemaker can generate jigsaw pieces while retaining information about their original positions and neighboring relationships, providing reliable ground truth for experiments. As preliminary work, I will generate a small set of puzzles and implement a simple geometric matching baseline. I will then test whether the correct neighboring pieces receive higher compatibility scores than unrelated pieces. This will establish whether the proposed experimental methodology is feasible before expanding to additional features and larger datasets.
+The project can use existing puzzle-generation tools rather than requiring a custom puzzle generator. Tools such as piecemaker can generate jigsaw pieces while retaining information about their original positions and neighboring relationships, providing reliable ground truth for experiments. As preliminary work, I will generate a small set of puzzles and implement a simple geometric matching baseline. I will test whether correct neighboring pieces receive higher compatibility scores than unrelated pieces. This will establish whether the proposed experimental methodology is feasible before expanding to additional features and larger datasets.
 
 
 Question 6: 
-The primary stakeholders are computer vision researchers and software developers interested in image reconstruction and matching problems. The findings may also benefit developers of puzzle-solving or computer-assisted puzzle applications and, potentially, puzzle enthusiasts and accessibility-focused applications. The primary value of the project is the experimental knowledge about the effectiveness and computational tradeoffs of different matching strategies.
+The primary stakeholders are software engineers and developers who must select algorithms based on competing system requirements. The findings may also benefit computer vision researchers and developers of puzzle-solving or computer-assisted puzzle applications. The primary value to software engineers is practical guidance for making design decisions when accuracy, runtime, memory, and scalability cannot all be optimized simultaneously.
 
 
 Question 7: 
-The resulting framework could be used to evaluate or select matching strategies for future reference-free puzzle reconstruction systems. For example, the results could show that geometric matching provides sufficient accuracy for large puzzles while a hybrid approach is more effective for puzzles containing visually repetitive regions. Future systems could then select an approach based on the characteristics of the puzzle and the desired balance between accuracy and performance.
+The results could be used as a decision framework for selecting puzzle matching strategies based on application requirements. For example, an engineer developing a system for large puzzles may prioritize runtime and memory efficiency, while another application may prioritize matching accuracy. The experimental results could indicate which feature combination provides an appropriate tradeoff for each situation. More broadly, the project demonstrates how empirical performance comparisons can support software engineering decisions involving competing quality requirements.
 
 
 Question 8: 
@@ -88,13 +89,13 @@ The project will require knowledge of image processing, computer vision, feature
 
 
 Question 9:
-The primary validation methods will be experimentation and quantitative analysis. For each puzzle, the known original arrangement will provide ground truth. The algorithms will be evaluated using:
+The primary validation methods will be experimentation and quantitative analysis. For each puzzle, the known original arrangement will provide ground truth. The strategies will be evaluated using:
 * Pairwise matching accuracy
 * Precision, recall, and F1 score
 * Top-k matching accuracy
-* Runtime and memory usage
+* Runtime and memory consumption
 * Scalability as puzzle size increases
-The central hypothesis is: combining geometric and visual features will improve matching accuracy compared with using either feature type alone, but the improvement will come at an increased computational cost. The size of this tradeoff will depend on puzzle characteristics.
+The central hypothesis is: No single matching strategy will be optimal for all conditions. Instead, different combinations of geometric and visual features will provide different tradeoffs between accuracy and computational cost, allowing an appropriate strategy to be selected based on puzzle characteristics and system requirements. The results will be used to develop empirical recommendations for selecting among the evaluated strategies.
 
 
 Question 10: 
