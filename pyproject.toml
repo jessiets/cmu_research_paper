@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jigsaw-matching"
+version = "0.1.0"
+description = "Controlled pairwise jigsaw-matching pilot"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "numpy==2.2.6",
+    "scipy==1.16.2",
+    "opencv-python-headless==4.12.0.88",
+    "scikit-image==0.25.2",
+    "scikit-learn==1.7.2",
+    "PyYAML==6.0.3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.2"]
+
+[tool.setuptools.packages.find]
+include = ["jigsaw*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

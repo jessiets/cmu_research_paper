@@ -1,0 +1,14 @@
+profile: main
+python_version: "3.13"
+source_dir: data/sources
+source_images: []
+expected_image_count: 20
+grids:
+  - [6, 9]
+  - [12, 18]
+  - [20, 30]
+complexity_levels: [0, 50]
+wear_levels_px: [0, 1]
+reference_levels: [none, exact, degraded]
+methods: [GEO, COLOR, GRAD, HYB-GC, HYB-FILTER, REF-ONLY]
+timing_repetitions: 5

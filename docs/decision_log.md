@@ -1,0 +1,17 @@
+# Decision Log
+
+Records every change made after `Experiment Spec.md` v1.0 (November 3, 2026). The handoff holds the decisions made before that date.
+
+**Rules**
+
+- Add one entry per change, newest last.
+- Get approval before changing anything listed in spec section B13.
+- Fill in "Paper impact" so the paper session knows what to update.
+
+| ID | Date | What changed | Why | Evidence | Approved by | Paper impact |
+|---|---|---|---|---|---|---|
+| D1 | 2026-11-06 | Scope reduced to v1.1. Methods: GEO, COLOR, GRAD, HYB-GC, HYB-FILTER, REF-ONLY (dropped TEX, HYB-GX). Complexity: 0% and 50% (dropped 25%). Wear: 0 and 1 px (dropped 2 px). Images: 3 pilot, 20 main. Dropped `tracemalloc`, interaction models, and the decision tree. Analysis fixed to comparisons C1–C5 with the Holm correction. | Keep only what RQ1, RQ2, or an existing paper claim needs. Arms fall from 23 to 17, and instances from 945 to 240. | Smoke tests in the spec appendix: 1 px wear already shows geometry's sensitivity, and 50% overlay already shows the loss of visual evidence. | User | Section 2.2 must say texture was not tested. Sections 4.2 and 4.3 must name the levels. Section 4.3 must drop `tracemalloc`. Section 4.4 must name the planned comparisons. Section 4.5 must note the dropped levels. Section 1.4's "framework" wording should become conditional guidance. |
+| D2 | 2026-11-06 | Reference locations are computed once per instance and reference level, cached, and reused across +R arms. Their cost is measured as `t_reference` and added to each +R arm's runtime. | Repeating template matching in every arm and timing repetition would cost hundreds to thousands of compute hours without changing results. | Runtime estimate from Nov 3, scaled from smoke-test timings. | User | Section 4.3 must explain that reference-location cost is measured once and counted in each reference arm's runtime. |
+| D3 | 2026-11-06 | Use Python 3.13 instead of Python 3.12. | Select the version recommended in Q1 to maximize compatibility with the pinned scientific Python dependencies. | Q1 in `open_decisions.md` recommends 3.13; the project lockfile pins dependency versions and records the resolved environment. | User (delegated version choice) | Report Python 3.13 and the pinned software versions in Methods. |
+| D4 | 2026-11-06 | Select the 23 eligible DIV2K train HR images by sorting filenames and drawing a seeded sample with master seed `20261106`; use the first 3 for the pilot and the other 20 for the main set. | Make image selection reproducible and independent of visual preference. | User approved proposed default 2 in `open_decisions.md`. | User | Report the selection procedure and seed in Methods; record the seed in configs and instance manifests. |
+| D5 | 2026-11-06 | Reassign each disconnected stray island to the neighboring piece with which it shares the longest border, and count reassignments in the manifest. | Preserve exactly `n` connected pieces while resolving disconnected rasterized regions. | User approved proposed default 3 in `open_decisions.md`. | User | Document the handling rule and report reassignment counts in instance manifests. |

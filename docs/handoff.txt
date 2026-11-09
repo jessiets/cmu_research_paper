@@ -1,0 +1,381 @@
+JIGSAW PUZZLE MATCHING RESEARCH — EXPERIMENT IMPLEMENTATION HANDOFF Last
+updated: November 6, 2026
+
+PURPOSE This file captures the current research framing, decisions, and
+constraints. It is the source of truth for research scope and decisions.
+
+Related project files:
+- Current paper: claude/Paper Submission - Revised.md
+- Implementation detail: Experiment Spec.md
+- Changes after the spec: Decision Log.md
+- Paper mismatches and required edits: Alignment Audit.md
+
+DECISIONS APPROVED NOVEMBER 3, 2026 These replace any conflicting text
+below.
+- Current paper: the Revised draft.
+- Reference condition: one shared reference evidence channel (R) is
+  added to every method and also tested alone. Levels are none, exact,
+  and degraded. GEO+R is labeled a reference-assisted hybrid.
+- Generator: a small custom generator built on Piecemaker's
+  interlockingnubs curve code. Ground truth comes only from grid
+  positions.
+- Boundary wear: a factor with levels 0 and 1 px (reduced Nov 6).
+- Visual complexity: seeded solid-color overlays on the same images, at
+  0% and 50% (reduced Nov 6).
+- Pair rule: each unordered pair has four side relations, and its pair
+  score is the best of the four. Flat sides are excluded.
+- Quality metrics: average precision and top-1 side accuracy are
+  primary. Accuracy is still reported beside the all-negative baseline.
+- Runtime and memory: wall-clock runtime by phase, CPU time and CPU
+  utilization, peak RSS, and direct array sizes. tracemalloc was
+  dropped on Nov 6.
+- Candidate solver repositories: none are used as baselines. All
+  baselines are written fresh on one code path.
+
+SCOPE REDUCTION APPROVED NOVEMBER 6, 2026 (Decision Log D1) The
+experiment covers just enough to answer RQ1 and RQ2 and support the
+paper's existing claims.
+- Methods: GEO, COLOR, GRAD, HYB-GC (rank fusion), HYB-FILTER
+  (filter-then-score), plus REF-ONLY. Texture matching is not tested
+  and is future work.
+- Sizes: 6 x 9, 12 x 18, 20 x 30. Images: 3 pilot and 20 main.
+- Analysis: five comparisons fixed in advance (spec section A7). No
+  interaction models and no decision tree; give conditional guidance.
+
+1.  TOPIC AND SCOPE The study investigates how geometric, visual, and
+    hybrid features affect pairwise jigsaw puzzle piece matching under
+    different information and computational constraints.
+
+The task is pairwise compatibility: given two pieces, estimate whether
+they are true neighbors. This is NOT a complete puzzle reconstruction
+system.
+
+Current scope assumptions: - Pieces are correctly oriented before
+matching. - Global orientation recovery is out of scope. - Full puzzle
+assembly, global consistency, and conflict resolution are out of
+scope. - Compare pairwise matching strategies, not entire end-to-end
+solvers as black boxes. - In reference-free matching, the completed
+image is ground truth for the evaluator only; it must not be provided to
+the matching method.
+
+2.  APPROVED CLAIM “This research argues that controlled experiments on
+    jigsaw puzzle matching can reveal how matching strategies perform
+    under different information and computational constraints. These
+    findings can then be compared with approaches used in other
+    fragment-matching domains to assess whether the same
+    strategy-selection principles may apply more broadly.”
+
+Do not claim that the study proves universal cross-domain
+generalization. Phase 2 is literature-based, not experimental validation
+in other domains.
+
+3.  RESEARCH QUESTIONS RQ1: How do different combinations of geometric
+    and visual features affect pairwise-matching accuracy, runtime, and
+    memory consumption under different jigsaw puzzle conditions?
+
+RQ2: How does the availability of a completed reference image affect the
+relative performance and suitability of different matching strategies?
+
+RQ3: To what extent can observed strategy-selection principles inform
+pairwise-matching tasks in other fragment-reconstruction domains, and
+what domain-specific constraints limit their applicability?
+
+RQ1 and RQ2 are answered by controlled jigsaw experiments (Phase 1). RQ3
+is answered through a structured literature-based comparison (Phase 2).
+
+4.  TWO-PHASE PLAN Phase 1 — Controlled jigsaw experiments:
+
+-   Compare representative geometric, visual, and hybrid pairwise
+    matching strategies.
+-   Use generated puzzle instances with known ground-truth adjacencies.
+-   Evaluate methods on the same instances wherever input requirements
+    permit.
+-   Compare reference-free and reference-image conditions.
+-   Vary puzzle size and visual complexity where feasible.
+-   Measure matching quality, runtime, and memory consumption.
+-   Use a shared evaluation pipeline and document implementation
+    differences.
+
+Phase 2 — Literature-based transferability assessment: - Compare
+experimental findings with methods used in other fragment-matching
+domains. - Priority domains: fragmented/shredded document reconstruction
+and fragmented/torn image reconstruction. - Compare fragment geometry,
+visual/structural evidence, reference-information availability, matching
+features, computational requirements, and evaluation criteria. -
+Identify plausible transferable principles and domain-specific
+constraints. - Do not claim experimental validation outside jigsaw
+puzzles.
+
+5.  MATCHING STRATEGY FAMILIES Geometric:
+
+-   Compare piece boundary shapes or contours.
+-   Possible representations include boundary coordinate sequences or
+    curves.
+-   For conventional jigsaw pieces, compare complementary/opposing
+    boundary profiles.
+
+Visual: - Color: compare corresponding pixel values or color
+distributions near candidate boundaries. - Gradient: compare
+intensity/color transitions across candidate boundaries. -
+Texture/appearance: compare local patterns or broader visual
+characteristics near boundaries.
+
+Hybrid: - Combine geometric and visual evidence. - Possible approaches
+include normalized score fusion or using one feature to filter candidate
+pairs before applying another. - Hybrid does not automatically mean
+better; it may add computation, memory use, and implementation
+complexity.
+
+These are strategy families, not fully specified algorithms. The
+implementation must define the exact representation, feature extraction,
+compatibility calculation, score normalization/combination, candidate
+generation, and decision threshold/ranking behavior for each method.
+
+6.  EXPERIMENTAL CONDITIONS Information availability: A. Reference-free
+
+-   Completed image is unavailable to the matching algorithm.
+-   Evaluator may use the completed image or generator metadata only to
+    establish true adjacency and score predictions.
+-   Prevent reference-image pixels or derived reference features from
+    leaking into the method.
+
+B. Reference-image - Completed image is available to the matching
+algorithm. - Document exactly how each strategy uses the reference
+image.
+
+Puzzle characteristics to vary where feasible: - Puzzle size / number of
+pieces. - Visual complexity, especially varied image content versus
+large uniform or solid-color regions. - Potentially image/source
+diversity and cutting geometry, subject to feasibility.
+
+Orientation: - Assume all pieces are correctly oriented initially. - Do
+not add unknown rotation as an experimental variable unless scope is
+explicitly revised.
+
+7.  GROUND TRUTH AND DATA Preferred initial approach:
+
+-   Generate puzzles from known source images using a reproducible
+    generator.
+-   Preserve piece identity, source-image coordinates, and generator
+    metadata so true neighboring pairs can be derived reliably.
+-   Use a common set of puzzle instances for all comparable methods.
+-   Store a reproducible manifest linking each instance to its source
+    image, puzzle size, cutting parameters, piece files, and
+    ground-truth adjacency list.
+
+Ground truth: - Represent true adjacency as unordered piece-ID pairs. -
+For n pieces, all unique unordered pairs number n(n-1)/2. - In a
+conventional rectangular grid with no missing pieces, true neighboring
+pairs are far fewer than all possible pairs. Accuracy alone may
+therefore be misleading. - Keep ground-truth generation separate from
+algorithm input, especially in reference-free experiments.
+
+Representativeness: - Generated puzzles provide controlled ground truth
+but may not represent all real puzzles. - Real puzzles may include
+irregular cuts, manufacturing variation, damaged pieces, glare, scanning
+noise, and other physical imperfections. - Document source-image
+diversity, piece count, cutting geometry, visual complexity, and
+generation settings. - Real puzzle data may supplement generated data if
+suitable data can be obtained and evaluated consistently; this is not a
+confirmed requirement.
+
+Generator decision: use Piecemaker's curve code in a small custom
+generator (see the approved decisions above and spec section B2).
+CV-Jigsaw-Reconstruction was rejected. Piecemaker:
+https://github.com/jkenlooper/piecemaker
+
+8.  CANDIDATE IMPLEMENTATIONS / BASELINES Repositories inspected on
+    November 3, 2026 (decisions in spec section B12):
+
+-   RL Puzzle Solver: https://github.com/RePAIRProject/RL_puzzle_solver
+-   PuzzleSolver: https://github.com/kellinwood/PuzzleSolver
+-   jigsaw-solver: https://github.com/bxntn/jigsaw-solver
+-   Zolver: https://github.com/Kawaboongawa/Zolver
+
+None are selected as baselines. Zolver, PuzzleSolver, and jigsaw-solver
+may inform the design, but code from repositories with no license file
+must not be reused.
+
+Do not compare complete solvers and attribute all differences to
+geometric vs visual features. Prefer extracting or implementing
+comparable pairwise matching components and running them through one
+evaluator. If complete systems must be used, document system-level
+confounds.
+
+9.  FAIR-COMPARISON REQUIREMENTS Where feasible:
+
+-   Use identical puzzle instances and ground truth across methods.
+-   Use a shared evaluator and consistent definition of a predicted
+    match.
+-   Keep hardware, operating environment, and execution conditions
+    consistent.
+-   Define timing boundaries consistently.
+-   Separate feature extraction time from pairwise comparison time when
+    practical.
+-   Document whether a method scores all pairs or filters candidates
+    first.
+-   Document feature representation, score calculation, normalization,
+    score fusion, thresholds, and tie handling.
+-   Record implementation language, dependencies, configuration, and
+    relevant optimizations.
+-   Repeat runs where needed to account for timing variability.
+-   Prevent ground-truth metadata or reference-image information from
+    leaking into reference-free matching.
+
+10. METRICS Primary metrics:
+
+-   Matching quality.
+-   Runtime.
+-   Memory consumption.
+
+Matching quality: - Compare predicted neighboring pairs with
+ground-truth adjacency pairs. - Report accuracy, but consider precision,
+recall, and F1-score because true adjacent pairs may be rare relative to
+all possible pairs. - Final metric definitions depend on whether a
+method ranks all pairs, predicts a fixed number of neighbors, or
+classifies pairs using a threshold. Define this consistently. - Top-k or
+ranking-based measures are possible only if they fit the actual
+algorithm output; not yet selected.
+
+Runtime: - Define exactly what is timed (feature extraction, pairwise
+score calculation, or complete matching operation). - Record puzzle size
+and number of candidate pairs with every measurement. - Use consistent
+execution conditions and repeat runs as appropriate.
+
+Memory: - Measure memory used during matching, including feature
+representations, intermediate results, and stored compatibility scores
+where practical. - Document dense all-pairs storage versus filtering or
+sparse storage. - Do not assume pair-score storage is the dominant cost;
+measure it in context.
+
+11. ANALYSIS PLAN
+
+-   Start with descriptive summaries for each strategy and condition.
+-   Compare methods across reference availability, puzzle size, and
+    visual complexity.
+-   Use paired comparisons when methods are tested on the same instances
+    and the data support paired analysis.
+-   Select statistical tests after the pilot and data inspection; do not
+    preselect a test without understanding the experimental structure
+    and distributions.
+-   Report effect sizes and confidence intervals where feasible.
+-   Examine trade-offs among accuracy, runtime, and memory rather than
+    ranking by accuracy alone.
+-   The final artifact may be a decision tree if results support clear,
+    reproducible decision boundaries. Otherwise, provide less
+    prescriptive strategy-selection guidance. Do not force a decision
+    tree.
+
+12. PILOT STUDY — FIRST IMPLEMENTATION MILESTONE Run a small pilot
+    before full data collection to verify:
+
+-   A candidate generator can produce usable pieces and reliable
+    ground-truth adjacency.
+-   Piece IDs and adjacency metadata remain traceable through generation
+    and loading.
+-   Candidate matching methods can run or be adapted to a common
+    interface.
+-   Reference-free mode excludes the completed image from algorithm
+    inputs.
+-   Reference-image mode passes the reference image in a documented way.
+-   The evaluator correctly scores predictions against ground truth.
+-   Runtime and memory can be measured consistently.
+-   Puzzle sizes and instance counts are practical.
+-   Visual-complexity categories can be created reproducibly.
+
+Use pilot results to finalize: - Generator and source-image selection. -
+Exact algorithms/features. - Puzzle sizes and number of instances. -
+Image-complexity categories. - Candidate-pair generation and
+prediction/ranking protocol. - Metric definitions. - Repetition counts
+and statistical analysis.
+
+13. VALIDITY CONCERNS Construct validity:
+
+-   Accuracy can be misleading under class imbalance.
+-   Define predicted neighboring pairs and ensure metrics match
+    algorithm output.
+-   Define runtime and memory measurement boundaries.
+
+Internal validity: - Feature extraction, candidate filtering, score
+storage, implementation language, and optimization may affect results
+independently of feature family. - Use a common pipeline and document
+unavoidable differences.
+
+External validity: - Generated puzzles may not represent real puzzle
+variability. - Document image content, cutting geometry, puzzle size,
+and generation procedure. - Limit claims to tested conditions if
+real-world data are not included.
+
+Transferability: - Documents can contain text/layout structure not
+present in jigsaws. - Irregular image fragments may have incomplete or
+noncomplementary boundaries. - Literature comparison identifies
+plausible applicability, not proof of cross-domain performance.
+
+14. RELATED-WORK LEADS Previously discussed jigsaw-related sources:
+
+-   Freeman & Garder (1964), “Apictorial jigsaw puzzles: The computer
+    solution of a problem in pattern recognition.”
+-   Demaine & Demaine (2007), work on jigsaw puzzles, edge matching, and
+    computational complexity.
+-   Chung, Fleck, & Forsyth (1998), shape and color matching.
+-   Yao & Shao (2003), shape/image matching.
+-   Nielsen, Drewsen, & Hansen (2008), image features and reducing
+    comparisons.
+-   Pomeranz, Shemesh, & Ben-Shahar (2011), greedy square jigsaw solving
+    without prior image knowledge.
+-   Gallagher (2012), gradient-smoothness compatibility and unknown
+    orientation.
+-   Cho, Avidan, & Freeman (2010), probabilistic image jigsaw solver.
+-   Jin et al. (2014), “Jigsaw Puzzle Image Retrieval via Pairwise
+    Compatibility Measurement,” DOI: 10.1109/BIGCOMP.2014.6741421.
+-   Guerroui & Séridi (2020), work involving image features and color
+    distance; verify exact title/details.
+-   Rika et al. (2022), Edge2Vec / embedding-based compatibility;
+    https://arxiv.org/abs/2211.07771. Verify exact title/authors.
+-   Shahar, Elkin, & Ben-Shahar (2025), irregular fragment
+    alignment/compatibility; https://arxiv.org/abs/2507.09767. Verify
+    publication status/details.
+
+Other fragment-reconstruction leads: - Zhu, Zhou, & Hu (2008), globally
+consistent reconstruction of ripped-up documents. - Kamran et
+al. (2018), “An LCS-based 2D fragmented image reassembly algorithm,”
+DOI: 10.1109/ICCSE.2018.8468808. - Le & Li (2019), JigsawNet: shredded
+image reassembly using CNN and loop-based composition, IEEE TIP 28(8),
+4000–4015, DOI: 10.1109/TIP.2019.2903298.
+
+Sources added in the current paper: - ISO/IEC 25010:2023. - Dirauf et
+al. (2025), corrupted jigsaw puzzle benchmarks. - Paixão et al. (2020),
+shredded text documents. - Richter et al. (2013), reassembling shredded
+documents.
+
+Methodology reference: - Wohlin et al. (2012), Experimentation in
+Software Engineering.
+
+Bibliographic caution: Some titles, author details, and publication
+metadata above were previously noted as needing verification. Verify
+exact details and read the sources before relying on specific claims.
+
+15. CURRENT PAPER STRUCTURE
+
+1. Introduction: context; problem and approved claim; research
+   questions; two-phase approach.
+2. Background: pairwise matching vs complete solving; strategy mechanics
+   and available information; accuracy and computational efficiency;
+   puzzle characteristics and representativeness.
+3. Related Work: jigsaw matching; computational trade-offs; matching
+   beyond conventional jigsaw puzzles.
+4. Methods: research design; systems and data; conditions and
+   procedures; analysis and transferability; threats to validity.
+5. Results.
+6. Discussion.
+7. Conclusion.
+
+16. IMPLEMENTATION SESSION PRIORITIES The coding session should turn the
+    spec into a working pilot, not expand paper prose. Follow the build
+    order in spec section B11.
+
+Sizes, instance counts, exact parameters, statistical tests, and any
+decision-tree format stay provisional until the pilot finishes. The
+final experimental matrix requires approval before the main run.
+
+END OF HANDOFF
