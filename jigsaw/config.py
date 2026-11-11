@@ -19,6 +19,8 @@ _REQUIRED_KEYS = {
     "reference_levels",
     "methods",
     "timing_repetitions",
+    "master_seed",
+    "pitch_px",
 }
 _METHODS = {"GEO", "COLOR", "GRAD", "HYB-GC", "HYB-FILTER", "REF-ONLY"}
 _REFERENCES = {"none", "exact", "degraded"}
@@ -38,6 +40,8 @@ class ExperimentConfig:
     reference_levels: tuple[str, ...]
     methods: tuple[str, ...]
     timing_repetitions: int
+    master_seed: int
+    pitch_px: int
 
 
 def load_config(path: str | Path) -> ExperimentConfig:
@@ -107,6 +111,12 @@ def load_config(path: str | Path) -> ExperimentConfig:
     if not methods or not set(methods) <= _METHODS:
         raise ValueError(f"methods must use {sorted(_METHODS)}")
     timing_repetitions = _integer(data, "timing_repetitions", minimum=1)
+    master_seed = _integer(data, "master_seed", minimum=0)
+    if master_seed != 20261106:
+        raise ValueError("master_seed must be 20261106 (decision D4)")
+    pitch_px = _integer(data, "pitch_px", minimum=1)
+    if pitch_px != 64:
+        raise ValueError("pitch_px must be 64 (spec A3)")
 
     return ExperimentConfig(
         profile=profile,
@@ -120,6 +130,8 @@ def load_config(path: str | Path) -> ExperimentConfig:
         reference_levels=reference_levels,
         methods=methods,
         timing_repetitions=timing_repetitions,
+        master_seed=master_seed,
+        pitch_px=pitch_px,
     )
 
 

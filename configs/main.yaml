@@ -1,7 +1,30 @@
 profile: main
 python_version: "3.13"
 source_dir: data/sources
-source_images: []
+master_seed: 20261106  # D4: seeded image selection
+pitch_px: 64  # spec A3
+# Drawn by jigsaw.generate.sources (D4); see configs/image_selection.json
+source_images:
+  - 0510.png
+  - 0186.png
+  - 0479.png
+  - 0223.png
+  - 0506.png
+  - 0173.png
+  - 0730.png
+  - 0178.png
+  - 0091.png
+  - 0525.png
+  - 0407.png
+  - 0016.png
+  - 0473.png
+  - 0288.png
+  - 0354.png
+  - 0737.png
+  - 0587.png
+  - 0217.png
+  - 0633.png
+  - 0459.png
 expected_image_count: 20
 grids:
   - [6, 9]

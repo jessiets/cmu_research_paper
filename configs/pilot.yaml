@@ -1,7 +1,13 @@
 profile: pilot
 python_version: "3.13"
 source_dir: data/sources
-source_images: []
+master_seed: 20261106  # D4: seeded image selection
+pitch_px: 64  # spec A3
+# Drawn by jigsaw.generate.sources (D4); see configs/image_selection.json
+source_images:
+  - 0269.png
+  - 0251.png
+  - 0731.png
 expected_image_count: 3
 grids:
   - [6, 9]
