@@ -1,0 +1,25 @@
+{
+  "config": "configs\\pilot.yaml",
+  "config_hash": "f102fba6564ce46c",
+  "mode": "memory",
+  "repetitions": 1,
+  "environment": {
+    "os": "Windows-10-10.0.19045-SP0",
+    "machine": "AMD64",
+    "processor": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+    "cpu_count": 12,
+    "software": {
+      "python": "3.13.17",
+      "numpy": "2.2.6",
+      "scipy": "1.16.2",
+      "opencv": "4.12.0"
+    },
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    },
+    "opencv_threads": 1,
+    "ram_bytes": 17087037440
+  }
+}
