@@ -2,7 +2,7 @@
 
 **Carried over from:** the planning chat on November 6, 2026, in the claude.ai project.
 
-**Status:** Q1 is resolved as Python 3.13 (D3). Proposed defaults 2 and 3 are approved (D4 and D5). Q4, Q5, and proposed defaults 1, 4, and 5 remain open.
+**Status:** Q1 is resolved as Python 3.13 (D3). Proposed defaults 2, 3, and 4 are approved (D4, D5, and D7). Q4, Q5, and proposed defaults 1 and 5 remain open.
 
 ## Questions waiting on the user
 
@@ -46,7 +46,7 @@ These defaults are not yet approved. Mention them in the pilot summary. Add a de
 1. **Reference location uses FFT-based masked squared-difference matching.** It is the same objective as masked `TM_SQDIFF`. Every reference arm uses it, as B7 permits. Direct masked `matchTemplate` at 20 × 30 is estimated to need trillions of operations per instance.
 2. **Image selection (approved; D4):** sort the eligible DIV2K train HR filenames, then draw 23 using master seed `20261106`. The first 3 drawn are the pilot set, and the other 20 are the main set. Record the seed in the config and in each manifest.
 3. **Disconnected regions (B2 step 5; approved; D5):** reassign each stray island to the neighboring piece it shares the longest border with. Count the reassignments in the manifest. Rejecting pieces would break G1's requirement of exactly `n` pieces.
-4. **Top-1 side accuracy:** for each non-border side, rank candidates by that side's relation score, not by the best-of-four pair score.
+4. **Top-1 side accuracy (approved; D7):** for each non-border side, rank candidates by that side's relation score, not by the best-of-four pair score.
 5. **Complexity overlay seed and shape:** spec B10 says only that the overlay is a "seeded, connected solid-color region", so the seed and shape still need defining.
    - **Seed:** `overlay_seed = sha256(image_id, grid, complexity)`. Wear does not change the seed, so the wear 0 and wear 1 instances share the same overlay and stay paired.
    - **Shape:** grow a single region from a seeded start pixel by randomized region growing. Stop when it covers exactly `round(fraction × area)` pixels. This makes the region connected and gives an exact coverage fraction.
