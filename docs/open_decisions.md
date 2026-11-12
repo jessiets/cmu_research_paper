@@ -2,7 +2,7 @@
 
 **Carried over from:** the planning chat on November 6, 2026, in the claude.ai project.
 
-**Status:** Q1 is resolved as Python 3.13 (D3). Proposed defaults 2, 3, and 4 are approved (D4, D5, and D7). Q4, Q5, and proposed defaults 1 and 5 remain open.
+**Status:** Q1 is resolved as Python 3.13 (D3). Q5 is resolved as option A for both hybrids (D9). All five proposed defaults are approved (D4, D5, D7, D10, D11). Only Q4 (time budget) remains open; the user will decide on fewer timing repetitions after the pilot.
 
 ## Questions waiting on the user
 
@@ -23,7 +23,7 @@ G9 asks whether the main run, projected from pilot timings, fits within the user
 - **Rough planning range:** a few to about 15 CPU-hours for the pilot, and roughly 7× that for the main run. These are estimates only. The pilot produces the real projection.
 - **If the projection is over budget:** stop and ask. The options are fewer timing repetitions, dropping 20 × 30, or fewer images. Each of these is a B13 design change.
 
-### Q5. How R is fused into the hybrid methods (blocks build step 8 with +R)
+### Q5. How R is fused into the hybrid methods (resolved: option A for both, D9)
 
 Spec B7 says each +R arm "rank-fuses R with that method's existing score channels." For the two hybrids, this can be read two ways.
 
@@ -41,13 +41,13 @@ Either choice needs a decision log entry with its paper impact.
 
 ## Proposed defaults (go ahead unless the user objects)
 
-These defaults are not yet approved. Mention them in the pilot summary. Add a decision log entry if the user confirms one or asks for a change.
+All five defaults are now approved. The pilot summary should still list them.
 
-1. **Reference location uses FFT-based masked squared-difference matching.** It is the same objective as masked `TM_SQDIFF`. Every reference arm uses it, as B7 permits. Direct masked `matchTemplate` at 20 × 30 is estimated to need trillions of operations per instance.
+1. **Reference location uses FFT-based masked squared-difference matching (approved; D10).** It is the same objective as masked `TM_SQDIFF`. Every reference arm uses it, as B7 permits. Direct masked `matchTemplate` at 20 × 30 is estimated to need trillions of operations per instance.
 2. **Image selection (approved; D4):** sort the eligible DIV2K train HR filenames, then draw 23 using master seed `20261106`. The first 3 drawn are the pilot set, and the other 20 are the main set. Record the seed in the config and in each manifest.
 3. **Disconnected regions (B2 step 5; approved; D5):** reassign each stray island to the neighboring piece it shares the longest border with. Count the reassignments in the manifest. Rejecting pieces would break G1's requirement of exactly `n` pieces.
 4. **Top-1 side accuracy (approved; D7):** for each non-border side, rank candidates by that side's relation score, not by the best-of-four pair score.
-5. **Complexity overlay seed and shape:** spec B10 says only that the overlay is a "seeded, connected solid-color region", so the seed and shape still need defining.
+5. **Complexity overlay seed and shape (approved; D11):** spec B10 says only that the overlay is a "seeded, connected solid-color region", so the seed and shape still need defining.
    - **Seed:** `overlay_seed = sha256(image_id, grid, complexity)`. Wear does not change the seed, so the wear 0 and wear 1 instances share the same overlay and stay paired.
    - **Shape:** grow a single region from a seeded start pixel by randomized region growing. Stop when it covers exactly `round(fraction × area)` pixels. This makes the region connected and gives an exact coverage fraction.
    - **Color:** the mean color of the cropped image, as B10 states.
