@@ -389,6 +389,10 @@ def main(argv: list[str] | None = None) -> None:
     levels = args.complexity if args.complexity is not None else list(config.complexity_levels)
     targets, missing = plan(config, args.instances, levels)
     if args.images:
+        known = {t[1]["image_id"] for t in targets}
+        unknown = sorted(set(args.images) - known)
+        if unknown:
+            raise SystemExit(f"--images not found among this config's generated instances: {', '.join(unknown)}")
         targets = [t for t in targets if t[1]["image_id"] in args.images]
     if args.grids:
         targets = [t for t in targets if f"{t[1]['rows']}x{t[1]['cols']}" in args.grids]

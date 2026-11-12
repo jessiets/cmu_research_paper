@@ -86,3 +86,32 @@ def test_end_to_end_writes_tables_and_report(tmp_path: Path) -> None:
         assert (out / name).exists(), name
     text = (out / "analysis.md").read_text(encoding="utf-8")
     assert "TEST - fabricated data" in text and "C4" in text
+
+
+def test_quality_only_rows_add_images_without_runtime() -> None:
+    """D18: untimed images supply AP/top-1 for C1-C4 but no runtime for C5."""
+    timed = fake_rows(n_images=4)
+    untimed = [dict(r, image_id=f"9{r['image_id'][1:]}", repetition=0, t_total="")
+               for r in fake_rows(n_images=4, reps=1)]
+    cells, warnings = load_cells(timed, [], untimed)
+    assert not warnings
+    images = {k[2] for k in cells}
+    assert len(images) == 8
+    timed_cells = [v for k, v in cells.items() if not k[2].startswith("9")]
+    untimed_cells = [v for k, v in cells.items() if k[2].startswith("9")]
+    assert all(v["reps"] == 2 and np.isfinite(v["t_total"]) for v in timed_cells)
+    assert all(v["reps"] == 0 and np.isnan(v["t_total"]) for v in untimed_cells)
+    tests = comparisons(cells, [("6x9", 0, 0)])
+    assert all(t["n_images"] == 8 for t in tests)  # quality comparisons use every image
+
+
+def test_median_shift_rule() -> None:
+    from jigsaw.run.timing_gate import median_shift
+
+    # One slow repetition: CV is high, but the median barely moves.
+    t = [1.0, 1.01, 0.99, 1.0, 1.6]
+    assert np.std(t, ddof=1) / np.mean(t) > 0.1
+    assert median_shift(t) < 0.01
+    # Two clusters: the median depends on which repetition is left out.
+    assert median_shift([1.0, 1.0, 1.5, 2.0, 2.0]) == pytest.approx(0.25 / 1.5)
+    assert np.isnan(median_shift([1.0, 2.0]))

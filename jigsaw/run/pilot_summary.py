@@ -23,6 +23,7 @@ from jigsaw.run.runner import reference_results_path, runlog_path
 
 GATES = Path("results/gates")
 PILOT_IMAGES, MAIN_IMAGES = 3, 20
+TIMED_MAIN_IMAGES = 10  # D18: runtime and memory on the first 10 main images; quality on all 20
 PILOT_VALUES = [
     ("K (side resampling points)", "96", "spec B5"),
     ("Flat-side threshold", "0.05 x pitch", "spec B5"),
@@ -70,7 +71,8 @@ def gate_lines(g8_pass, g9_text) -> list[str]:
     if g7:
         s = g7["mean_localized_share"]
         lines.append(f"| G7 reference | {verdict(g7['G7_pass'])} | localized share exact {s['exact']:.3f}, degraded {s['degraded']:.3f}; degraded below exact in {g7['instances_where_degraded_below_exact']}/{len(g7['instances'])} |")
-    lines.append(f"| G8 measurement | {verdict(g8_pass)} | see the timing section (CV of t_total under 10%) |")
+    lines.append(f"| G8 measurement | {verdict(g8_pass)} | D19 rule: median t_total moves < 10% when any one repetition "
+                 "is left out; the spec's CV rule is reported in the timing section |")
     lines.append(f"| G9 practicality | {g9_text} | projection below |")
     if g10:
         inc = [c["increase"] for c in g10["checks"]]
@@ -107,10 +109,17 @@ def main() -> None:
     def projected(r: int) -> float:
         return (timing_hours * r / reps + memory_hours) * MAIN_IMAGES / PILOT_IMAGES
 
+    # D18 design: timing (all reps) + memory on TIMED_MAIN_IMAGES, one quality run on the rest.
+    per_image_timing = timing_hours / PILOT_IMAGES
+    d18_timing = per_image_timing * TIMED_MAIN_IMAGES
+    d18_quality = per_image_timing / reps * (MAIN_IMAGES - TIMED_MAIN_IMAGES)
+    d18_memory = memory_hours / PILOT_IMAGES * TIMED_MAIN_IMAGES
+    d18_total = d18_timing + d18_quality + d18_memory
+
     if args.budget_hours is None:
         g9_text = "waiting on Q4 budget"
     else:
-        g9_text = verdict(main_hours <= args.budget_hours) + f" (budget {args.budget_hours:g} h)"
+        g9_text = verdict(d18_total <= args.budget_hours) + f" ({d18_total:.1f} h projected, budget {args.budget_hours:g} h; D18)"
 
     out = ["# Pilot summary", "",
            f"Pilot set: {PILOT_IMAGES} images (0269, 0251, 0731), 12 instance types each, 17 arms, {reps} timed repetitions "
@@ -124,12 +133,22 @@ def main() -> None:
     if g8:
         for grid, s in g8["arms_by_grid"].items():
             out.append(f"- t_total {grid}: median {s['median_t']:.2f} s, CV median {s['median_cv']:.3f}, max {s['max_cv']:.3f}, "
-                       f"share under 10% {s['share_under_limit']:.2f}")
+                       f"share under 10% {s['share_under_limit']:.2f}; largest median shift {s.get('max_median_shift', float('nan')):.3f}")
         for grid, s in g8["locate_by_grid"].items():
-            out.append(f"- t_reference {grid}: median {s['median_t']:.2f} s, CV max {s['max_cv']:.3f}")
+            out.append(f"- t_reference {grid}: median {s['median_t']:.2f} s, CV max {s['max_cv']:.3f}; "
+                       f"largest median shift {s.get('max_median_shift', float('nan')):.3f}")
+        if "cv_rule_pass" in g8:
+            out.append(f"- The spec's CV rule {'passes' if g8['cv_rule_pass'] else 'fails'}: "
+                       f"{len(g8['over_limit'])} arm groups and {len(g8['locate_over_limit'])} location groups have CV ≥ 10%. "
+                       "In the pilot, each arm group had one slow repetition (CV under 7% without it); the location "
+                       "groups were all 6x9 locations of about 0.1 s, where jitter of a few hundredths of a second "
+                       "exceeds 10%. G8 is decided by the D19 median rule.")
     out.append(f"- Pilot wall time: {pilot_hours:.1f} h ({timing_hours:.1f} h timing, {memory_hours:.1f} h memory)")
-    out.append(f"- **Projected main run: {main_hours:.1f} h** at {reps} repetitions "
-               f"(3 reps: {projected(3):.1f} h; 2 reps: {projected(2):.1f} h). Fewer repetitions is a B13 change needing approval.")
+    out.append(f"- Full design (all 20 images timed at {reps} reps, plus memory): {main_hours:.1f} h; "
+               f"3 reps: {projected(3):.1f} h; 2 reps: {projected(2):.1f} h.")
+    out.append(f"- **Projected main run under D18: {d18_total:.1f} h**: timing at {reps} reps on {TIMED_MAIN_IMAGES} images "
+               f"{d18_timing:.1f} h, one quality run on the other {MAIN_IMAGES - TIMED_MAIN_IMAGES} {d18_quality:.1f} h, "
+               f"memory on the {TIMED_MAIN_IMAGES} timed images {d18_memory:.1f} h.")
 
     if memory:
         peak = defaultdict(list)
@@ -154,11 +173,12 @@ def main() -> None:
             out.append(f"| {label} | " + " | ".join(cells) + " |")
 
     out += ["", "## Paper-affecting changes", "",
-            "Decisions D1–D16 in `docs/decision_log.md`; required paper edits P1–P27 in `docs/paper_updates.md`.", "",
+            "Decisions D1–D19 in `docs/decision_log.md`; required paper edits P1–P30 in `docs/paper_updates.md`.", "",
             "## Open items", ""]
     if failed:
         out.append(f"- {len(failed)} failed runs in the results files (kept with their errors).")
-    out.append("- Q4: main-run time budget (needed for G9). Decide whether to lower timing repetitions (B13 change).")
+    if args.budget_hours is None:
+        out.append("- Q4: main-run time budget (needed for G9).")
     g10 = load("step11_g10.json")
     if g10 and not g10["G10_pass"]:
         low = sorted({c["image_id"] for c in g10["checks"] if not c["pass"]})

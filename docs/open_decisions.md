@@ -2,7 +2,7 @@
 
 **Carried over from:** the planning chat on November 6, 2026, in the claude.ai project.
 
-**Status:** Q1 is resolved as Python 3.13 (D3). Q5 is resolved as option A for both hybrids (D9). All five proposed defaults are approved (D4, D5, D7, D10, D11). Only Q4 (time budget) remains open; the user will decide on fewer timing repetitions after the pilot.
+**Status:** Q1 is resolved as Python 3.13 (D3). Q5 is resolved as option A for both hybrids (D9). All five proposed defaults are approved (D4, D5, D7, D10, D11). Q4 is resolved: the budget is 24 hours for the main run, met by the D18 design (runtime on 10 images, quality on all 20), with the G8 rule changed by D19. No questions remain open.
 
 ## Questions waiting on the user
 
@@ -15,7 +15,7 @@ The spec (B1) says Python 3.12. The project uses Python 3.13, recorded as D3 in 
 - **Paper impact:** none, beyond the software versions reported in Methods.
 - **If 3.13 is chosen:** add a decision log entry that changes spec B1.
 
-### Q4. Time budget for the main run (gate G9)
+### Q4. Time budget for the main run (gate G9) (resolved: 24 hours, D18)
 
 G9 asks whether the main run, projected from pilot timings, fits within the user's budget.
 
