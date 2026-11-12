@@ -1,0 +1,84 @@
+{
+  "G3_scores_pass": true,
+  "instances": 18,
+  "methods": [
+    "COLOR",
+    "GEO"
+  ],
+  "comparisons": 36,
+  "mismatches": [],
+  "hashes": {
+    "i01aeb335e135": {
+      "COLOR": "99b15246b4967ac1437161c2387e7a865174ea86d04c286187b11683e0d7a00f",
+      "GEO": "d107fecb334d1bc6b2cd7a2fe8e1caf6100717b48602e82951b35ccd9574bf12"
+    },
+    "i1895cff9b35c": {
+      "COLOR": "236da153c6e8671442352286ea2173f53670fed40c91fd980976d6e74e24562c",
+      "GEO": "c9a71f486bb1ddb2453bc5a60f501b1213e33d62a9e77d0808263cd19ee1ecde"
+    },
+    "i1e77236667ca": {
+      "COLOR": "5b1fb9a0ebd687363d8c7ffe5ae1bc3da31d1ec1192153dbbaa2a13d286ce198",
+      "GEO": "951bd93f357cf6a89a9ba9bc60cf228360ecb1be89b505e64c3a746c291ebc75"
+    },
+    "i53063cbc02bf": {
+      "COLOR": "92c45bae35ea2979d2704879c3d2414773ee6739be9645fd7d97c4854f97dab3",
+      "GEO": "caad4ea1102a2354c44fe6d981375074c705e17b9dfd7bd91c876b4071475b22"
+    },
+    "i6e48eaa6b0a8": {
+      "COLOR": "5f95831ffde13e0a346a59b4f05d076309405334e2098b3f37c5dabaecb69baa",
+      "GEO": "f944a133c6df9ffaff3be355b89d84d4c52420b33b96e4d6661b1ad6661ba79d"
+    },
+    "i71047cc9524b": {
+      "COLOR": "34a7f16d2cc200a0595c874384ad5307a4e23b0d2ba4bbd30d6c6e37851d04cb",
+      "GEO": "1e06ed86d22610b0e543c1a4d521eb73aa6c99dae37a016c3d22e739034ab8f7"
+    },
+    "i79c32160a2ac": {
+      "COLOR": "d434bb353bca0f8ae58160bbe609fc922fa98a4c68683ff4e0ff6fac159038fa",
+      "GEO": "b64123c7b64583449c04cce48c2d66cdc9b4ab27d687d005b679be2bdaa1978d"
+    },
+    "i7d28e3325d64": {
+      "COLOR": "9917764c93b438fff96ec9701b36a3300d1f887586d5d2b8f073ac27c2323898",
+      "GEO": "395bb09ba3280d92a1676e7c518dc834c1df969952768c904dfcdb9deb2a56e0"
+    },
+    "i8c7e769e8d8c": {
+      "COLOR": "f898687861f1eebf3588ce5ee9b5137c458552340dd7b26fda5511c8d0b180c4",
+      "GEO": "4ef3a9c9c54422ccd340da9a51aec8afc9e9e93a5df02ecde6a21a43072502a5"
+    },
+    "i919924a56d90": {
+      "COLOR": "aa31ed8df935c61b945cabfe34d1661dd26accdd6fed6897dbaae97bee2251e8",
+      "GEO": "dc99f03a907e5f827bb39a134fe7be5149f57a40085878ce09363662bb10fe77"
+    },
+    "i9873f351c483": {
+      "COLOR": "f7045e7841f8f77bd81bd5cd9d2c3cd31303e21c9e8cb61c38e2e246d1ed35c5",
+      "GEO": "7819c29a7d65391c57b2e00a4573b627f144408141041871bbd976abf2b35c88"
+    },
+    "i99d6ddf6873a": {
+      "COLOR": "4dd5d79415d8761ae2548e3220cdc7fa29b9274d7beb18d3c24bbda4f4e14acb",
+      "GEO": "46d1c8e2f390ad457e5ec34f4f755ee74b79c68dbdb116b0a2db91133363aefe"
+    },
+    "i9cd467488134": {
+      "COLOR": "96f45f70af963d0afc16ccaae612c140a40cfbeffe348ef17a7d82d18d40caab",
+      "GEO": "5622f6fda30c63da4b767cb35e9a195f4340c14fd98e70e2744af9075477f3fd"
+    },
+    "i9fa60f31149a": {
+      "COLOR": "713ec9ba9618aee79b78b1135cf64d3367e8bc83a49f6fd8622bd70baceccc52",
+      "GEO": "f352df237a1160bb9a55f9f5237534ac413c7746ab2dc8cd5c03c2a47fa3ce24"
+    },
+    "ic2a33bbdaee2": {
+      "COLOR": "4fa19571b10e85beecd8d09f5439411d6122893e914d85e938a62ebba7b633c3",
+      "GEO": "6ef810aa83224e60fb939a42ec31252025221d4c15e294962325947d449b21af"
+    },
+    "ic4aa3be295ba": {
+      "COLOR": "fe7401a194048072513e91826f9ffb99f890f70ee5ce2bf9329981d2688859ab",
+      "GEO": "9b3c0472a67d9041a5b1cdcd434a2f115d53bbc2277d4f7f2d71db51bae8c831"
+    },
+    "ieb8f9f3074be": {
+      "COLOR": "1559b98d858a33337d228ee25bfda0a4a95f433a3305fb1b427870b616aff833",
+      "GEO": "79a16e1282acd1f9725eb111f4df6c573c3bc0f3e5e83387aeb7b568729a94c5"
+    },
+    "if599558d78ad": {
+      "COLOR": "5017d30db5d680a0501b3f94736b4e6bad698279951ab61abef106afff0a299d",
+      "GEO": "3e4b58f0174fa43fa927e2c9817c08f827f679a0da9ffb3028b7d3bb4a2b11d0"
+    }
+  }
+}
