@@ -17,6 +17,8 @@ import sys
 import time
 from pathlib import Path
 
+from jigsaw.run.measure import peak_memory_bytes
+
 _FORBIDDEN: tuple[str, ...] = ()
 _WATCHED_EVENTS = {"open", "os.listdir", "os.scandir", "os.mkdir", "os.remove", "shutil.copyfile",
                    "shutil.copytree", "os.rename"}
@@ -50,7 +52,9 @@ def install_input_controls(forbidden: list[str]) -> None:
     sys.addaudithook(_audit)
 
 
-def run(public_dir: Path, instance_id: str, method: str, reference_path: Path | None) -> dict:
+def run(public_dir: Path, instance_id: str, method: str, with_reference: bool,
+        locations_path: Path | None, measure_memory: bool = False) -> dict:
+    """Score one arm. Reference arms receive cached piece locations, never the image."""
     import numpy as np
 
     from jigsaw.features.pieces import load_public_pieces
@@ -58,16 +62,20 @@ def run(public_dir: Path, instance_id: str, method: str, reference_path: Path | 
     from jigsaw.methods.base import PuzzleInput
     from jigsaw.methods.registry import get_matcher
 
-    matcher = get_matcher(method)
+    matcher = get_matcher(method, reference=with_reference)
     t0 = time.perf_counter()
     pieces = load_public_pieces(public_dir)
-    reference = np.load(reference_path) if reference_path is not None else None
+    locations = None
+    if matcher.uses_reference:
+        if locations_path is None:
+            raise ValueError(f"{matcher.name} needs cached reference locations")
+        with np.load(locations_path) as cached:
+            locations = cached["locations"]
     t1 = time.perf_counter()
     sides = extract_sides(pieces)
     t2 = time.perf_counter()
-    if matcher.uses_reference and reference is None:
-        raise ValueError(f"{method} needs a reference but the arm provides none")
-    puzzle = PuzzleInput(instance_id, pieces, sides, reference if matcher.uses_reference else None)
+    puzzle = PuzzleInput(instance_id, pieces, sides, None, locations)
+    baseline = peak_memory_bytes() if measure_memory else None  # after imports and loading
 
     c0 = time.process_time()
     t3 = time.perf_counter()
@@ -76,6 +84,7 @@ def run(public_dir: Path, instance_id: str, method: str, reference_path: Path | 
     result = matcher.score(puzzle, features)
     t5 = time.perf_counter()
     c1 = time.process_time()
+    peak_delta = max(peak_memory_bytes() - baseline, 0) if measure_memory else None
 
     scores = {key: np.asarray(result.relation_scores[key]) for key in ("right", "below")}
     return {
@@ -89,25 +98,60 @@ def run(public_dir: Path, instance_id: str, method: str, reference_path: Path | 
             "feature_bytes": features.nbytes, "score_bytes": result.nbytes,
             "piece_ids": list(sides.piece_ids),
             "metadata": result.metadata,
+            "peak_rss_delta": peak_delta,
         },
     }
+
+
+def locate(public_dir: Path, reference_path: Path, measure_memory: bool = False) -> dict:
+    """Locate every piece in the reference; times only the location step (t_reference)."""
+    import numpy as np
+
+    from jigsaw.features.pieces import load_public_pieces
+    from jigsaw.features.reference import locate_pieces
+    from jigsaw.features.sides import extract_sides
+
+    pieces = load_public_pieces(public_dir)
+    reference = np.load(reference_path)
+    sides = extract_sides(pieces)
+    baseline = peak_memory_bytes() if measure_memory else None
+    c0 = time.process_time()
+    t0 = time.perf_counter()
+    found = locate_pieces(pieces, sides, reference)
+    t1 = time.perf_counter()
+    c1 = time.process_time()
+    peak_delta = max(peak_memory_bytes() - baseline, 0) if measure_memory else None
+    return {"arrays": {"locations": found["locations"], "match_xy": found["match_xy"]},
+            "measures": {"t_reference": t1 - t0, "cpu_reference": c1 - c0, "scale": found["scale"],
+                         "piece_ids": list(sides.piece_ids), "pitch": sides.pitch,
+                         "peak_rss_delta": peak_delta}}
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--public", type=Path, required=True)
     parser.add_argument("--instance-id", required=True)
-    parser.add_argument("--method", required=True)
-    parser.add_argument("--reference", type=Path)
+    parser.add_argument("--task", choices=("score", "locate"), default="score")
+    parser.add_argument("--method")
+    parser.add_argument("--with-reference", action="store_true")
+    parser.add_argument("--reference", type=Path, help="reference array (.npy), locate task only")
+    parser.add_argument("--locations", type=Path, help="cached locations (.npz), reference arms only")
     parser.add_argument("--forbid", action="append", default=[])
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--measure-memory", action="store_true",
+                        help="memory run: record peak memory (timings from this run are not used)")
     args = parser.parse_args()
 
     install_input_controls(args.forbid)
     import numpy as np
 
-    output = run(args.public, args.instance_id, args.method, args.reference)
-    np.savez(args.out / "scores.npz", **output["scores"])
+    if args.task == "locate":
+        output = locate(args.public, args.reference, args.measure_memory)
+        np.savez(args.out / "locations.npz", **output["arrays"])
+    else:
+        output = run(args.public, args.instance_id, args.method, args.with_reference, args.locations,
+                     args.measure_memory)
+        np.savez(args.out / "scores.npz", **output["scores"])
     (args.out / "measures.json").write_text(json.dumps(output["measures"]), encoding="utf-8")
 
 

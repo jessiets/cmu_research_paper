@@ -32,6 +32,7 @@ from jigsaw.config import ExperimentConfig, load_config
 from jigsaw.cvsetup import cv2
 from jigsaw.generate.curves import Edge, cut_seed, generate_edges
 from jigsaw.generate.cut import CutResult, build_label_map
+from jigsaw.generate.overlay import apply_overlay
 from jigsaw.generate.sources import center_crop, file_sha256, image_id_for, load_oriented
 from jigsaw.generate.wear import apply_wear, wear_padding, wear_seed
 from jigsaw.seeds import grid_label, seed_hex, seed_int
@@ -111,7 +112,8 @@ def software_versions() -> dict[str, str]:
 
 
 def export_instance(out_root: Path, cond: Condition, image: np.ndarray, cut: CutResult,
-                    edges: list[Edge], source_meta: dict, remove_only: bool = True) -> dict:
+                    edges: list[Edge], source_meta: dict, remove_only: bool = True,
+                    overlay: dict | None = None) -> dict:
     """Write one instance. ``image`` is the cropped RGB image after any overlay."""
     rows, cols, pitch = cond.rows, cond.cols, cut.pitch
     n = rows * cols
@@ -196,7 +198,7 @@ def export_instance(out_root: Path, cond: Condition, image: np.ndarray, cut: Cut
         "condition": cond.to_json(),
         "pitch": pitch,
         "source": source_meta,
-        "overlay": None,
+        "overlay": overlay,
         "seeds": {
             "rule": "sha256 of '|'-joined values; first 8 bytes as an integer",
             "cut_seed": cut_seed(cond.image_id, rows, cols),
@@ -229,17 +231,15 @@ def generate_image(source_path: Path, out_root: Path, grids, complexity_levels, 
         edges = generate_edges(image_id, rows, cols, pitch)
         cut = build_label_map(edges, rows, cols, pitch)
         for complexity in complexity_levels:
-            if complexity != 0:
-                raise NotImplementedError(
-                    "complexity overlays are build step 11 and wait on proposed default 5")
-            image = crop
+            image, overlay = apply_overlay(crop, image_id, rows, cols, complexity)  # D11
+            overlay = overlay if complexity else None  # complexity-0 manifests stay unchanged
             for wear in wear_levels:
                 cond = Condition(image_id, rows, cols, complexity, wear)
                 meta = {"file": source_path.name, "sha256": source_sha, "rotated_ccw_90": rotated,
                         "oriented_size_rows_cols": list(oriented.shape[:2]),
                         "crop": {"top": top, "left": left, "height": rows * pitch,
                                  "width": cols * pitch}}
-                written.append(export_instance(out_root, cond, image, cut, edges, meta, remove_only))
+                written.append(export_instance(out_root, cond, image, cut, edges, meta, remove_only, overlay))
     return written
 
 

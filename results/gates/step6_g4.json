@@ -1,10 +1,25 @@
 {
   "G4_pass": true,
-  "methods_checked": [
+  "arms_checked": [
     "GEO",
-    "COLOR"
+    "GEO+R (exact)",
+    "GEO+R (degraded)",
+    "COLOR",
+    "COLOR+R (exact)",
+    "COLOR+R (degraded)",
+    "GRAD",
+    "GRAD+R (exact)",
+    "GRAD+R (degraded)",
+    "HYB-GC",
+    "HYB-GC+R (exact)",
+    "HYB-GC+R (degraded)",
+    "HYB-FILTER",
+    "HYB-FILTER+R (exact)",
+    "HYB-FILTER+R (degraded)",
+    "REF-ONLY (exact)",
+    "REF-ONLY (degraded)"
   ],
-  "note": "reference-free arms only; reference arms are checked again in build step 9",
+  "note": "stripped runs apply to reference-free arms; permutation applies to all 17 arms",
   "canary": {
     "open_truth": "BLOCKED",
     "list_private": "BLOCKED",
@@ -46,8 +61,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -98,8 +338,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -150,8 +615,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -202,8 +892,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -254,8 +1169,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -306,8 +1446,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -358,8 +1723,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -410,8 +2000,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -462,8 +2277,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -514,8 +2554,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -566,8 +2831,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -618,8 +3108,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -670,8 +3385,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -722,8 +3662,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -774,8 +3939,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -826,8 +4216,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -878,8 +4493,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,
@@ -930,8 +4770,233 @@
           },
           "pass": true
         },
+        "GEO+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GEO+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
         "COLOR": {
           "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "COLOR+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "GRAD+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-GC+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER": {
+          "stripped_scores_identical": true,
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "HYB-FILTER+R (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (exact)": {
+          "stripped_scores_identical": "n/a (reference arm)",
+          "permuted_scores_identical": true,
+          "permuted_same_exclusions": true,
+          "permuted_max_abs_score_diff": 0.0,
+          "permuted_metric_abs_diffs": {
+            "ap": 0.0,
+            "top1": 0.0,
+            "f1_at_e": 0.0,
+            "accuracy_at_e": 0.0,
+            "relation_accuracy": 0.0,
+            "filter_recall": 0.0
+          },
+          "pass": true
+        },
+        "REF-ONLY (degraded)": {
+          "stripped_scores_identical": "n/a (reference arm)",
           "permuted_scores_identical": true,
           "permuted_same_exclusions": true,
           "permuted_max_abs_score_diff": 0.0,

@@ -28,6 +28,8 @@ class PuzzleInput:
     pieces: Mapping[str, PieceImage]   # public data only, sorted ID order
     sides: SideSet                     # output of shared preprocessing
     reference: np.ndarray | None       # None in the reference-free arm
+    # Cached piece locations in the reference (D2); set for +R arms and REF-ONLY only.
+    locations: np.ndarray | None = None
 
 
 @dataclass

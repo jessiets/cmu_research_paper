@@ -9,6 +9,9 @@ Tie rules (spec B7):
 - When relations tie for a pair's best score, a true pair's direction credit is
   1 / (tied relations) if the true relation is among them, else 0.
 
+Sums of fractional credits use ``math.fsum`` (exactly rounded), so metrics do
+not depend on the order of piece IDs at all, not even in the last bit (gate G4).
+
 Top-1 side accuracy follows proposed default 4: each non-border side ranks its
 candidates by that side's own relation score, not by the best-of-four pair score.
 """
@@ -16,6 +19,7 @@ candidates by that side's own relation score, not by the best-of-four pair score
 from __future__ import annotations
 
 import json
+import math
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
@@ -130,7 +134,7 @@ def top1_side_accuracy(relation_scores: dict[str, np.ndarray], truth: Truth) -> 
         upper, lower = (i, j) if rel == "b_below_a" else (j, i)
         credits.append(_top1_credit(below[upper, :], lower, upper))   # upper piece's B side
         credits.append(_top1_credit(below[:, lower], upper, lower))   # lower piece's T side
-    return float(np.mean(credits)), len(credits)
+    return math.fsum(credits) / len(credits), len(credits)
 
 
 def evaluate(relation_scores: dict[str, np.ndarray], truth: Truth,
@@ -149,7 +153,7 @@ def evaluate(relation_scores: dict[str, np.ndarray], truth: Truth,
 
     ap = average_precision(pairs.score, labels)
     weights = top_e_weights(pairs.score, e)
-    tp = float(weights[labels].sum())
+    tp = math.fsum(weights[labels].tolist())
     f1 = tp / e  # precision = recall = F1 when exactly E pairs are predicted
     accuracy = (candidates - 2 * (e - tp)) / candidates
 
@@ -158,8 +162,9 @@ def evaluate(relation_scores: dict[str, np.ndarray], truth: Truth,
     tie_counts = np.array([bin(int(m)).count("1") for m in masks], dtype=np.float64)
     direction = np.where((masks & rel_bits) != 0, 1.0 / tie_counts, 0.0)
     true_weights = weights[position]
-    relation_accuracy = (float(np.sum(true_weights * direction) / true_weights.sum())
-                         if true_weights.sum() > 0 else float("nan"))
+    weight_total = math.fsum(true_weights.tolist())
+    relation_accuracy = (math.fsum((true_weights * direction).tolist()) / weight_total
+                         if weight_total > 0 else float("nan"))
 
     right, below = relation_scores["right"], relation_scores["below"]
     scored = []
@@ -171,7 +176,7 @@ def evaluate(relation_scores: dict[str, np.ndarray], truth: Truth,
 
     return Metrics(
         ap=ap, top1=top1, f1_at_e=f1, accuracy_at_e=accuracy,
-        relation_accuracy=relation_accuracy, filter_recall=float(np.mean(scored)),
+        relation_accuracy=relation_accuracy, filter_recall=sum(scored) / len(scored),
         base_rate=e / candidates, all_negative_accuracy=(candidates - e) / candidates,
         candidates=candidates, true_pairs=e, non_border_sides=sides,
     )

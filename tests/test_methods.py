@@ -85,7 +85,7 @@ def synthetic_instance(tmp_path_factory: pytest.TempPathFactory) -> Path:
     return base / "inst" / entries[0]["instance_id"]
 
 
-@pytest.mark.parametrize("name", ["GEO", "COLOR"])
+@pytest.mark.parametrize("name", ["GEO", "COLOR", "GRAD", "HYB-GC", "HYB-FILTER"])
 def test_methods_find_neighbors_on_clean_synthetic_puzzle(name: str, synthetic_instance: Path) -> None:
     puzzle = load_puzzle(synthetic_instance / "public", synthetic_instance.name)
     matcher = get_matcher(name)
@@ -97,7 +97,7 @@ def test_methods_find_neighbors_on_clean_synthetic_puzzle(name: str, synthetic_i
     assert not matcher.uses_reference
 
 
-@pytest.mark.parametrize("name", ["GEO", "COLOR"])
+@pytest.mark.parametrize("name", ["GEO", "COLOR", "GRAD", "HYB-GC", "HYB-FILTER"])
 def test_scores_are_deterministic(name: str, synthetic_instance: Path) -> None:
     runs = []
     for _ in range(2):
@@ -109,6 +109,60 @@ def test_scores_are_deterministic(name: str, synthetic_instance: Path) -> None:
 
 
 def test_registry_lists_built_methods() -> None:
-    assert available() == ("COLOR", "GEO")
+    assert available() == ("COLOR", "GEO", "GRAD", "HYB-FILTER", "HYB-GC")
     with pytest.raises(KeyError, match="not implemented"):
-        get_matcher("GRAD")
+        get_matcher("TEX")
+
+
+# ---- GRAD, fusion, filter -----------------------------------------------------------
+
+def test_gradient_stats_invertible_even_for_flat_color() -> None:
+    from jigsaw.features.gradient import gradient_stats
+
+    flat = np.full((2, 96, 3), 128.0)
+    mean, inv = gradient_stats(flat, flat)  # all real gradients are zero; dummies keep S invertible
+    assert np.all(np.isfinite(inv)) and np.allclose(mean, 0.0)
+
+
+def test_grad_dense_matches_pairwise(synthetic_instance: Path) -> None:
+    from jigsaw.features.gradient import mgc, mgc_pairs
+
+    puzzle = load_puzzle(synthetic_instance / "public", synthetic_instance.name)
+    f = get_matcher("GRAD").extract(puzzle).arrays
+    a_stats = (f["right_mean"], f["right_inv_cov"])
+    b_stats = (f["left_rev_mean"], f["left_rev_inv_cov"])
+    dense = mgc(f["right_inner"], a_stats, f["left_rev_inner"], b_stats)
+    ai, bi = np.meshgrid(np.arange(dense.shape[0]), np.arange(dense.shape[1]), indexing="ij")
+    pairs = mgc_pairs(ai.ravel(), bi.ravel(), f["right_inner"], a_stats, f["left_rev_inner"], b_stats)
+    assert np.allclose(dense.ravel(), pairs, rtol=1e-9)
+
+
+def test_rank_fuse_hand_example() -> None:
+    from jigsaw.methods.fusion import rank_fuse
+
+    a = np.array([[WORST, 3.0], [1.0, WORST]])
+    fused = rank_fuse([a, a])
+    # row ranks: [[1, 2], [2, 1]]; column ranks: [[1, 2], [2, 1]] -> sum 2 channels
+    assert fused.tolist() == [[4.0, 8.0], [8.0, 4.0]]
+
+
+def test_top_k_mask_is_union_of_row_and_column_with_ties() -> None:
+    from jigsaw.methods.hybrids import top_k_mask
+
+    s = np.array([[WORST, 5.0, 4.0, 1.0],
+                  [0.0, WORST, 2.0, 2.0],
+                  [9.0, 0.5, WORST, 0.0],
+                  [0.1, 0.2, 0.3, WORST]])
+    keep = top_k_mask(s, 1)
+    # row winners: (0,1), (1,2)+(1,3) tied, (2,0), (3,2); column winners: (2,0), (0,1), (0,2), (1,3)
+    expected = {(0, 1), (1, 2), (1, 3), (2, 0), (3, 2), (0, 2)}
+    assert {tuple(x) for x in np.argwhere(keep)} == expected
+
+
+def test_hyb_filter_scores_only_kept_relations(synthetic_instance: Path) -> None:
+    puzzle = load_puzzle(synthetic_instance / "public", synthetic_instance.name)
+    matcher = get_matcher("HYB-FILTER")
+    result = matcher.score(puzzle, matcher.extract(puzzle))
+    finite = sum(int(np.isfinite(m).sum()) for m in result.relation_scores.values())
+    assert finite <= result.metadata["relations_kept"]
+    assert result.metadata["storage"] == "filtered"

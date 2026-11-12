@@ -7,6 +7,8 @@ For every pilot instance and every built reference-free method:
    renamed, index rewritten); scores mapped back to the original IDs must be
    identical, and so must every metric. Our tie rules are order-free, so
    "apart from tie-breaks" needs no allowance; any difference is reported.
+   Reference arms locate pieces in each copy separately, so the location
+   step is covered by the permutation check too.
 Plus, once per gate run:
 3. Canary: a worker with the input controls installed tries to open the real
    ``private/truth.json``; the read must be refused.
@@ -29,7 +31,7 @@ import numpy as np
 
 from jigsaw.config import load_config
 from jigsaw.evaluate.metrics import evaluate, load_truth, truth_from_dict
-from jigsaw.run.runner import Arm, all_arms, arm_is_built, call_worker, plan
+from jigsaw.run.runner import Arm, all_arms, arm_is_built, cached_locations, call_worker, plan
 from jigsaw.seeds import seed_int
 
 METRIC_FIELDS = ("ap", "top1", "f1_at_e", "accuracy_at_e", "relation_accuracy", "filter_recall")
@@ -41,7 +43,7 @@ def stripped_copy(instance_dir: Path, dest: Path) -> Path:
     return target
 
 
-def permuted_copy(instance_dir: Path, dest: Path) -> tuple[Path, dict[str, str]]:
+def permuted_copy(instance_dir: Path, dest: Path, with_reference: bool = False) -> tuple[Path, dict[str, str]]:
     """Copy public data with piece IDs re-drawn; returns the copy and old -> new ID map."""
     index = json.loads((instance_dir / "public" / "piece_index.json").read_text(encoding="utf-8"))
     old = sorted(index["pieces"])
@@ -55,24 +57,36 @@ def permuted_copy(instance_dir: Path, dest: Path) -> tuple[Path, dict[str, str]]
     (target / "public" / "piece_index.json").write_text(
         json.dumps({"instance_id": index["instance_id"], "pieces": sorted(mapping.values())}, indent=2),
         encoding="utf-8")
+    if with_reference:
+        shutil.copytree(instance_dir / "reference", target / "reference")
     return target, mapping
 
 
-def run_in(instance_dir: Path, arm: Arm) -> tuple[dict[str, np.ndarray], dict]:
+def run_in(instance_dir: Path, arm: Arm, cache: Path | None = None) -> tuple[dict[str, np.ndarray], dict]:
+    """Score one arm; reference arms locate pieces into ``cache`` first (one cache per copy)."""
+    locations = None
+    if arm.reference != "none":
+        locations, _ = cached_locations(instance_dir, arm.reference, cache)
     with tempfile.TemporaryDirectory(prefix="jigsaw_g4_") as tmp:
-        return call_worker(instance_dir, arm, Path(tmp))
+        return call_worker(instance_dir, arm, Path(tmp), locations)
 
 
-def check(instance_dir: Path, arm: Arm) -> dict:
-    normal, _ = run_in(instance_dir, arm)
+def check(instance_dir: Path, arm: Arm, cache_root: Path | None = None) -> dict:
+    """Stripped run (reference-free arms only) and re-permuted run (all arms)."""
+    with tempfile.TemporaryDirectory(prefix="jigsaw_g4_copy_") as tmp:
+        tmp = Path(tmp)
+        normal_cache = cache_root / "normal" if cache_root else tmp / "cache_normal"
+        normal, _ = run_in(instance_dir, arm, normal_cache)
+        stripped = None
+        if arm.reference == "none":
+            stripped, _ = run_in(stripped_copy(instance_dir, tmp / "stripped"), arm)
+        permuted_dir, mapping = permuted_copy(instance_dir, tmp / "permuted", arm.reference != "none")
+        permuted_cache = cache_root / "permuted" if cache_root else tmp / "cache_permuted"
+        permuted, _ = run_in(permuted_dir, arm, permuted_cache)
     truth = load_truth(instance_dir)
     base_metrics = evaluate(normal, truth)
-    with tempfile.TemporaryDirectory(prefix="jigsaw_g4_copy_") as tmp:
-        stripped, _ = run_in(stripped_copy(instance_dir, Path(tmp) / "stripped"), arm)
-        permuted_dir, mapping = permuted_copy(instance_dir, Path(tmp) / "permuted")
-        permuted, _ = run_in(permuted_dir, arm)
 
-    stripped_equal = all(np.array_equal(normal[k], stripped[k]) for k in ("right", "below"))
+    stripped_equal = stripped is None or all(np.array_equal(normal[k], stripped[k]) for k in ("right", "below"))
 
     new_sorted = sorted(mapping.values())
     position = np.array([new_sorted.index(mapping[pid]) for pid in truth.piece_ids])
@@ -94,7 +108,7 @@ def check(instance_dir: Path, arm: Arm) -> dict:
     metric_diffs = {f: abs(getattr(base_metrics, f) - getattr(permuted_metrics, f)) for f in METRIC_FIELDS}
 
     return {
-        "stripped_scores_identical": stripped_equal,
+        "stripped_scores_identical": stripped_equal if stripped is not None else "n/a (reference arm)",
         "permuted_scores_identical": permuted_equal,
         "permuted_same_exclusions": same_exclusions,
         "permuted_max_abs_score_diff": max_diff,
@@ -147,17 +161,20 @@ def main() -> None:
     parser.add_argument("--report", type=Path, default=Path("results/gates/step6_g4.json"))
     args = parser.parse_args()
     config = load_config(args.config)
-    arms = [a for a in all_arms(config) if a.reference == "none" and arm_is_built(a)]
+    arms = [a for a in all_arms(config) if arm_is_built(a)]
     targets, _ = plan(config, args.instances, [0])
 
     results = {}
     for instance_dir, cond in targets:
         entry = {"condition": cond, "static": static_checks(instance_dir), "arms": {}}
-        for arm in arms:
-            entry["arms"][arm.method] = check(instance_dir, arm)
+        with tempfile.TemporaryDirectory(prefix="jigsaw_g4_cache_") as cache_root:
+            for arm in arms:  # one location cache per copy, shared by that copy's reference arms
+                entry["arms"][arm.label] = check(instance_dir, arm, Path(cache_root))
         results[instance_dir.name] = entry
-        arm_text = "  ".join(f"{m}: {'ok' if r['pass'] else 'FAIL'} (perm max diff {r['permuted_max_abs_score_diff']:.1e})"
-                             for m, r in entry["arms"].items())
+        failing = [m for m, r in entry["arms"].items() if not r["pass"]]
+        worst = max(r["permuted_max_abs_score_diff"] for r in entry["arms"].values())
+        arm_text = (f"{len(entry['arms']) - len(failing)}/{len(entry['arms'])} arms ok, "
+                    f"max permuted diff {worst:.1e}" + (f", FAILING: {failing}" if failing else ""))
         print(f"{cond['rows']}x{cond['cols']:<3} {cond['image_id']} w{cond['wear']}  static "
               f"{'ok' if entry['static']['pass'] else 'FAIL'} (id/grid rho {entry['static']['id_grid_spearman']:+.2f})  {arm_text}")
 
@@ -165,12 +182,12 @@ def main() -> None:
     print(f"canary: open truth.json -> {canary_result['open_truth']}, list private/ -> {canary_result['list_private']}")
     passed = canary_result["pass"] and all(
         e["static"]["pass"] and all(r["pass"] for r in e["arms"].values()) for e in results.values())
-    report = {"G4_pass": passed, "methods_checked": [a.method for a in arms],
-              "note": "reference-free arms only; reference arms are checked again in build step 9",
+    report = {"G4_pass": passed, "arms_checked": [a.label for a in arms],
+              "note": "stripped runs apply to reference-free arms; permutation applies to all 17 arms",
               "canary": canary_result, "instances": results}
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    print(f"G4: {'PASS' if passed else 'FAIL'} ({len(results)} instances x {len(arms)} methods)")
+    print(f"G4: {'PASS' if passed else 'FAIL'} ({len(results)} instances x {len(arms)} arms)")
 
 
 if __name__ == "__main__":
