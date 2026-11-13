@@ -115,3 +115,21 @@ def test_median_shift_rule() -> None:
     # Two clusters: the median depends on which repetition is left out.
     assert median_shift([1.0, 1.0, 1.5, 2.0, 2.0]) == pytest.approx(0.25 / 1.5)
     assert np.isnan(median_shift([1.0, 2.0]))
+
+
+def test_reference_arm_peak_includes_location_memory() -> None:
+    """D20: a reference arm's peak is max(matching peak, location peak)."""
+    rows = fake_rows(n_images=1, reps=1)
+    memory = []
+    for r in rows:
+        m = dict(r, instance_id=f"inst{r['image_id']}", peak_rss_delta=100)
+        memory.append(m)
+    locate = [{"instance_id": "inst0000", "reference": "exact", "peak_rss_delta": 500, "status": "ok"},
+              {"instance_id": "inst0000", "reference": "degraded", "peak_rss_delta": 50, "status": "ok"}]
+    cells, warnings = load_cells(rows, memory, (), locate)
+    assert not warnings
+    peak = {k[1]: v["peak"] for k, v in cells.items()}
+    assert peak["GEO"] == 100                       # no reference: matching only
+    assert peak["GEO+R (exact)"] == 500             # location peak is larger
+    assert peak["GEO+R (degraded)"] == 100          # matching peak is larger
+    assert peak["REF-ONLY (exact)"] == 500

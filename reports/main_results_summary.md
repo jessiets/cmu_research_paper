@@ -1,13 +1,13 @@
-# Main results: initial summary
+# Main results: final summary
 
-**Status:** initial results from the main run (2026-11-13). Quality: 20 DIV2K images. Runtime: 10 of them at 5 repetitions (D18). Peak memory is pending, because the memory pass has not been run yet, so the memory side of C5 is not reported here. Full tables: `reports/main_analysis/analysis.md` and its CSVs. Figures: `reports/main_analysis/*.png`.
+**Status:** final results from the main run (2026-11-13). Quality: 20 DIV2K images. Runtime: 10 of them at 5 repetitions. Peak memory: the same 10 images (D18). Full tables: `reports/main_analysis/analysis.md` and its CSVs. Figures: `reports/main_analysis/*.png`.
 
 **Design:** 12 conditions:
 - 3 grids: 6 × 9, 12 × 18 and 20 × 30 pieces
 - 2 complexity levels: 0% and 50% overlay
 - 2 wear levels: 0 and 1 px
 
-Each condition has 17 arms (5 methods × 3 reference levels, plus REF-ONLY at the exact and degraded levels). Every run completed: 2,040 quality runs and 10,200 timing runs, with no failures, all on one code commit. Comparisons use paired per-image differences: the median difference, a 95% bootstrap CI and a Wilcoxon signed-rank test, Holm-corrected across all 336 C1–C3 tests. AP is the main metric. Top-1 side accuracy is in `tests.csv`.
+Each condition has 17 arms (5 methods × 3 reference levels, plus REF-ONLY at the exact and degraded levels). Every run completed: 2,040 quality runs, 10,200 timing runs and 2,040 memory runs, with no failures. The memory pass ran on a later commit, but no experiment code, configuration or dependency changed between the two commits. Comparisons use paired per-image differences: the median difference, a 95% bootstrap CI and a Wilcoxon signed-rank test, Holm-corrected across all 336 C1–C3 tests. AP is the main metric. Top-1 side accuracy is in `tests.csv`.
 
 ## Key findings
 
@@ -38,10 +38,17 @@ Each condition has 17 arms (5 methods × 3 reference levels, plus REF-ONLY at th
 - **No reference vs. exact reference:** Kendall's τ ranges from −0.40 to 1.00. The ordering reverses at 20 × 30, 50% complexity, wear 1, and τ = 0 in three conditions.
 - **Exact vs. degraded reference:** the rankings mostly agree (τ ≥ 0.6 in 10 of 12 conditions).
 
-**5. Cost (C5, runtime only).**
+**5. Cost (C5).**
 - **GEO** is the fastest arm in every condition and is on the AP–runtime Pareto front in all 12. Median t_total is 0.01 s, 0.15 s and 1.3 s for the three grids.
 - **The single visual methods and hybrids** are slower than GEO: 0.1–0.7 s at the two smaller grids, and 2.2–3.6 s at 20 × 30.
 - **The reference arms** cost most, and their cost grows fastest with puzzle size. At 20 × 30, exact-reference arms take about 62–65 s, against 10–14 s for degraded ones. The degraded reference is half resolution, so locating pieces in it is cheaper.
+- **Peak memory** grows with puzzle size. For 6 × 9, 12 × 18 and 20 × 30 respectively:
+  - GEO: 7, 25 and 73 MiB.
+  - HYB-GC: 15, 43 and 118 MiB.
+  - GRAD is the lightest matching method: 5, 18 and 54 MiB.
+- **With an exact reference,** the location step sets the peak for every arm: about 22, 73 and 194 MiB. A degraded reference adds almost nothing. A reference arm's peak counts the larger of the matching and location peaks (D20).
+- **Every peak is under 200 MiB,** so memory is not a practical constraint at these puzzle sizes.
+- **On the quality–runtime–memory Pareto front in all 12 conditions:** GEO, GRAD and REF-ONLY (degraded).
 
 ## Caveats to state in the paper
 
@@ -50,4 +57,5 @@ Each condition has 17 arms (5 methods × 3 reference levels, plus REF-ONLY at th
 - **A few comparisons have a bootstrap CI that excludes zero but are not significant after Holm.** One example is GRAD − GEO at 6 × 9, wear 0 and complexity 0%. In these, 2–3 images go strongly the other way, which the rank-based Wilcoxon test counts and the median does not. The planned test decides significance.
 - **Overlay strength varies by image.** 0091 and 0217 are already 50–80% uniform at 0%, so the overlay adds less to them (P26). See the table in `analysis.md`.
 - **The reference scale** is about 5% too large at wear 1 (P25).
+- **Reference memory rule (D20).** The rule for counting reference-location memory was set after the memory data were seen, because the location step runs in a separate cached process. Without it, REF-ONLY would appear to need about 0 MiB.
 - **Runtime stability (G8, D19 rule).** All 2,040 arm groups pass. 2 of 240 reference-location groups fail: 6 × 9 degraded locations of 0.08–0.11 s, where the five timings fall into two clusters. The effect is at most about 0.03 s on two instances' +R runtimes, so the C5 conclusions are unaffected. They are reported as a failure, not rerun.

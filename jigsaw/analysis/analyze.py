@@ -34,6 +34,7 @@ from pathlib import Path
 import numpy as np
 from scipy.stats import kendalltau, wilcoxon
 
+from jigsaw.run.runner import reference_results_path
 from jigsaw.seeds import seed_int
 
 METHODS = ("GEO", "COLOR", "GRAD", "HYB-GC", "HYB-FILTER")
@@ -71,12 +72,18 @@ def grid_order(cond: tuple[str, int, int]) -> tuple:
     return (rows * cols, cond[1], cond[2])
 
 
-def load_cells(timing: list[dict], memory: list[dict], quality_rows: list[dict] = ()) -> tuple[dict, list[str]]:
+def load_cells(timing: list[dict], memory: list[dict], quality_rows: list[dict] = (),
+               locate_memory: list[dict] = ()) -> tuple[dict, list[str]]:
     """cells[(cond, arm, image)] = {"ap", "top1", "t_total", "peak"}; plus warnings.
 
     ``quality_rows`` come from ``runner --mode quality`` (D18: images that are not
     timed). They supply AP and top-1 only; their t_total stays NaN, so runtime
     medians come from the timed images alone.
+
+    ``locate_memory`` holds the reference-location memory runs. A reference
+    arm's peak is the larger of its matching peak and its instance's location
+    peak (D20): the two steps run one after the other, so the pipeline's peak
+    is the larger one. This mirrors D2, which adds location time to runtime.
     """
     warnings: list[str] = []
     quality: dict[tuple, dict] = {}
@@ -91,13 +98,25 @@ def load_cells(timing: list[dict], memory: list[dict], quality_rows: list[dict] 
         quality.setdefault(key, metrics)
         if timed:
             times[key].append(float(row["t_total"]))
-    peaks = {(condition_of(r), arm_label(r["method"], r["reference"]), r["image_id"]): float(r["peak_rss_delta"])
-             for r in memory if r["status"] == "ok" and r["peak_rss_delta"] != ""}
+    locate_peaks = {(r["instance_id"], r["reference"]): float(r["peak_rss_delta"])
+                    for r in locate_memory if r["status"] == "ok" and r["peak_rss_delta"] != ""}
+    peaks = {}
+    for r in memory:
+        if r["status"] != "ok" or r["peak_rss_delta"] == "":
+            continue
+        peak = float(r["peak_rss_delta"])
+        if r["reference"] != "none":
+            located = locate_peaks.get((r["instance_id"], r["reference"]))
+            if located is None:
+                warnings.append(f"no location memory for {r['instance_id']} ({r['reference']}); peak excludes it")
+            else:
+                peak = max(peak, located)
+        peaks[(condition_of(r), arm_label(r["method"], r["reference"]), r["image_id"])] = peak
     cells = {}
     for key, metrics in quality.items():
         cells[key] = dict(metrics, t_total=float(np.median(times[key])) if times[key] else float("nan"),
                           reps=len(times[key]), peak=peaks.get(key, float("nan")))
-    failed = [r for r in list(timing) + list(memory) + list(quality_rows) if r["status"] != "ok"]
+    failed = [r for r in list(timing) + list(memory) + list(quality_rows) + list(locate_memory) if r["status"] != "ok"]
     if failed:
         warnings.append(f"{len(failed)} failed runs excluded (kept in the results files)")
     return cells, warnings
@@ -352,7 +371,10 @@ def main() -> None:
     if missing:
         raise SystemExit(f"missing results file(s): {', '.join(missing)}")
     quality_rows = [r for path in args.quality for r in read_csv(path)]
-    cells, warnings = load_cells(timing, memory, quality_rows)
+    locate_memory = read_csv(reference_results_path(args.memory)) if args.memory else []
+    if args.memory and memory and any(r["reference"] != "none" for r in memory) and not locate_memory:
+        raise SystemExit(f"missing reference-location memory file: {reference_results_path(args.memory)}")
+    cells, warnings = load_cells(timing, memory, quality_rows, locate_memory)
     if not cells:
         raise SystemExit("no successful runs found")
     conditions = sorted({k[0] for k in cells}, key=grid_order)
